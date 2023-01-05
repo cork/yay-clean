@@ -8,6 +8,7 @@ import (
 	"regexp"
 	"sort"
 
+	"github.com/dustin/go-humanize"
 	"github.com/fvbommel/sortorder"
 )
 
@@ -152,13 +153,12 @@ func main() {
 	if !config.Quiet {
 		size := ""
 		if config.CalculateSpace {
-			size = fmt.Sprintf()
+			size = fmt.Sprintf(" (disk space saved: %s)", humanize.IBytes(uint64(config.Space)))
 		}
 		if config.Remove {
-
+			fmt.Printf("\033[32m==>\033[0m\033[1m finished: %d files removed%s\033[0m\n", config.RemovedFiles, size)
 		} else {
-			fmt.Println(config.RemovedFiles, "files removed")
-
+			fmt.Printf("\033[32m==>\033[0m\033[1m finished dry run: %d candidates%s\033[0m\n", config.RemovedFiles, size)
 		}
 	}
 }
