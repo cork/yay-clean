@@ -33,7 +33,7 @@ func main() {
 	}
 
 	base = filepath.Join(base, ".cache/yay")
-	prefixMatcher := regexp.MustCompile(`-\d+\.`)
+	prefixMatcher := regexp.MustCompile(`-\d+[.:]`)
 
 	sources := make(map[string]map[string]map[string][]string)
 	packages := make(map[string]map[string][]string)
